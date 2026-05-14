@@ -1,0 +1,118 @@
+module.exports.config = {
+ name: "spamkick",
+ version: "4.0.0",
+ role: 1,
+ author: "stack's",
+ description: "Auto kick spammer",
+ category: "group",
+ guide: "[on/off]"
+};
+
+module.exports.onStart = async ({ api, event, args }) => {
+ if (!global.antispam) global.antispam = new Map();
+
+ const threadID = event.threadID;
+
+ if (args[0] === "on") {
+
+  if (global.antispam.has(threadID)) {
+   return api.sendMessage(
+`╔══════════════════╗
+║ ⚠️ 𝗔𝗡𝗧𝗜-𝗦𝗣𝗔𝗠 ⚠️ ║
+╠══════════════════╣
+║ Déjà activé dans ce groupe
+╚══════════════════╝`, threadID);
+  }
+
+  global.antispam.set(threadID, { users: {} });
+
+  return api.sendMessage(
+`╔══════════════════╗
+║ ✅ 𝗔𝗡𝗧𝗜-𝗦𝗣𝗔𝗠 ✅ ║
+╠══════════════════╣
+║ Système activé avec succès
+╚══════════════════╝`, threadID);
+ }
+
+ if (args[0] === "off") {
+
+  if (!global.antispam.has(threadID)) {
+   return api.sendMessage(
+`╔══════════════════╗
+║ ⚠️ 𝗔𝗡𝗧𝗜-𝗦𝗣𝗔𝗠 ⚠️ ║
+╠══════════════════╣
+║ Déjà désactivé
+╚══════════════════╝`, threadID);
+  }
+
+  global.antispam.delete(threadID);
+
+  return api.sendMessage(
+`╔══════════════════╗
+║ ❌ 𝗔𝗡𝗧𝗜-𝗦𝗣𝗔𝗠 ❌ ║
+╠══════════════════╣
+║ Système désactivé
+╚══════════════════╝`, threadID);
+ }
+
+ return api.sendMessage("Utilise: spamkick on / off", threadID);
+};
+
+module.exports.onChat = async ({ api, event, usersData }) => {
+ const { senderID, threadID } = event;
+
+ if (!global.antispam) global.antispam = new Map();
+ if (!global.antispam.has(threadID)) return;
+
+ let data = global.antispam.get(threadID);
+
+ if (!data.users[senderID]) {
+  data.users[senderID] = { count: 1, time: Date.now() };
+ } else {
+  data.users[senderID].count++;
+ }
+
+ let user = data.users[senderID];
+ let timePassed = Date.now() - user.time;
+
+ const LIMIT_MSG = 6;
+ const LIMIT_TIME = 15000;
+
+ if (user.count >= LIMIT_MSG && timePassed < LIMIT_TIME) {
+  try {
+   await api.removeUserFromGroup(senderID, threadID);
+
+   const name = await usersData.getName(senderID);
+
+   api.sendMessage(
+`╔══════════════════╗
+║ 🚫 𝗦𝗣𝗔𝗠 𝗗𝗘𝗧𝗘𝗖𝗧𝗘𝗗 ║
+╠══════════════════╣
+║ ${name} a été expulsé
+║ Raison: spam abusif
+╚══════════════════╝`, threadID);
+
+  } catch (e) {
+
+   const name = await usersData.getName(senderID);
+
+   api.sendMessage(
+`╔══════════════════╗
+║ ⚠️ 𝗘𝗥𝗥𝗘𝗨𝗥 ⚠️ ║
+╠══════════════════╣
+║ Impossible de kick ${name}
+║ (admin ou permission)
+╚══════════════════╝`, threadID);
+
+   console.log("Erreur kick:", e);
+  }
+
+  data.users[senderID] = { count: 1, time: Date.now() };
+ }
+
+ if (timePassed > LIMIT_TIME) {
+  data.users[senderID] = { count: 1, time: Date.now() };
+ }
+
+ global.antispam.set(threadID, data);
+};
