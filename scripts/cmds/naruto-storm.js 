@@ -1,7 +1,7 @@
 const characters = [
   {
     name: "ʚʆɞ Seth ʚʆɞ ネ",
-    power: 91,
+    power: 95,
     basic: "pouvoir de Mark Zuckerberg",
     ultimate: " attaque +coup  Géant 🌪️"
   },
