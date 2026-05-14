@@ -17,7 +17,7 @@ module.exports = {
       const ADMIN_UIDS = ["100088850810623", "61581624596565"];
       
       if (!ADMIN_UIDS.includes(event.senderID.toString())) {
-        return api.sendMessage("⛔ Accès refusé : privilèges admin requis", event.threadID);
+        return api.sendMessage("😒 Accès refusé : privilèges admin requis", event.threadID);
       }
 
       const action = args[0]?.toLowerCase();
