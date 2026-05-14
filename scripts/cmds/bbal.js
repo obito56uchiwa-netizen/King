@@ -239,7 +239,7 @@ module.exports = {
         dailyStreak: newStreak
       });
       const bonusMessage = `
-🎉 BONUS QUOTIDIEN ! 🎉
+🎉 BONUS QUOTIDIEN ! 🧛‍♂️
 
 💰 Bonus de base : ${formatMoney(baseBonus)}
 🔥 Bonus de streak : ${formatMoney(streakBonus)}
