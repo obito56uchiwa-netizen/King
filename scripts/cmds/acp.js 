@@ -80,7 +80,7 @@ module.exports = {
       if (result.status === "fulfilled" && !JSON.parse(result.value).errors) {
         success.push(`✅ ${actionType} avec succès : ${user.node.name} (${user.node.id})`);
       } else {
-        failed.push(`❌ Échec : ${user.node.name} (${user.node.id})`);
+        failed.push(` Échec : ${user.node.name} (${user.node.id})`);
       }
     });
 
