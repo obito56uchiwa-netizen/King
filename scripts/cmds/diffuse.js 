@@ -2,7 +2,7 @@ module.exports = {
   config: {
     name: "diffuse",
     version: "1.3",
-    author: "SETH ✨🥷",
+    author: "STACKS🩷",
     shortDescription: "Diffuser un message dans tous les groupes",
     longDescription: "Permet à l'administrateur principal de diffuser un message avec style dans tous les groupes.",
     category: "admin",
