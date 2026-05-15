@@ -2,7 +2,7 @@ module.exports.config = {
  name: "spamkick",
  version: "4.0.0",
  role: 1,
- author: "stack's",
+ author: "STACKS🩷",
  description: "Auto kick spammer",
  category: "group",
  guide: "[on/off]"
