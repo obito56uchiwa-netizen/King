@@ -37,7 +37,7 @@ module.exports = {
    option13: "[13] Changer le nom du groupe",
    option14: "[14] Voir les informations du groupe",
    selectPrompt: "-> Pour choisir, répondez à ce message avec le numéro correspondant <-",
-   autoRestart: "[⚜️] Le bot redémarrera automatiquement à 12h00",
+   autoRestart: "[🔵] Le bot redémarrera automatiquement à 12h00",
    currentVersion: "[⚜️] Version actuelle du bot : ",
    bannedUsers: "[⚜️] Actuellement %1 utilisateurs bannis\n\n%2",
    bannedThreads: "[⚜️] Actuellement %1 groupes bannis\n\n%2",
