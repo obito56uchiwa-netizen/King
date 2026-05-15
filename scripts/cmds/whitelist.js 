@@ -19,7 +19,7 @@ module.exports = {
         '   {pn} user remove <uid | @tag>: Remove user from whitelist\n' +
         '   {pn} user list: List all whitelisted users\n' +
         '   {pn} user on/off: Enable/disable user whitelist mode\n\n' +
-        '📋 THREAD WHITELIST:\n' +
+        '🔵 THREAD WHITELIST:\n' +
         '   {pn} thread add [threadID]: Add thread to whitelist (current if no ID)\n' +
         '   {pn} thread remove [threadID]: Remove thread from whitelist\n' +
         '   {pn} thread list: List all whitelisted threads\n' +
