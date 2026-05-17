@@ -12,7 +12,7 @@ module.exports = {
 			vi: "Hệ thống ngân hàng toàn diện với 50+ tính năng",
 			en: "Comprehensive banking system"
 		},
-		category: "game",
+		category: "games",
 		guide: {
 			vi: "Sử dụng {pn} help để xem tất cả lệnh",
 			en: "Use {pn} help to see all commands"
