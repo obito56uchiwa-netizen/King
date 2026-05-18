@@ -4,7 +4,7 @@ const fs = require("fs");
  module.exports = { 
          config: { 
                  name: "box", 
-                 aliases: ["box"], 
+                 aliases: ["bx"], 
                  version: "1.0", 
                  author: "MILAN", 
                  countDown: 5, 
