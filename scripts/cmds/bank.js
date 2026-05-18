@@ -2471,7 +2471,7 @@ ${fonts.bold("Score History:")}
 					} else if (user.wealth >= 1000000) {
 						leaderboardText += ` | 🏆 Millionaire`;
 					} else if (user.wealth >= 100000) {
-						leaderboardText += ` | ⭐ Wealthy`;
+						leaderboardText += ` | 🧛‍♂️ Wealthy`;
 					}
 
 					leaderboardText += `\n\n`;
